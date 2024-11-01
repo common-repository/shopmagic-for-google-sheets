@@ -1,0 +1,75 @@
+{
+	"name": "wpdesk/shopmagic-google-sheets",
+	"prefer-stable": true,
+	"config": {
+		"sort-packages": true,
+		"platform": {
+			"php": "7.2.5"
+		},
+		"autoloader-suffix": "ShopMagicGoogleSheets",
+		"allow-plugins": {
+			"cweagans/composer-patches": true,
+			"kylekatarnls/update-helper": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"wpdesk/wp-codeception": true,
+			"wpdesk/wp-wpdesk-composer": true
+		}
+	},
+	"require": {
+		"php": ">=7.2|^8",
+		"ext-openssl": "*",
+		"ext-json": "*"
+	},
+	"require-dev": {
+		"10up/wp_mock": "*",
+		"google/apiclient": "^2.11",
+		"guzzlehttp/guzzle": "^7.5",
+		"phpunit/phpunit": "<9",
+		"psr/cache": "*",
+		"psr/container": "1.0.0",
+		"psr/http-message": "*",
+		"psr/log": "*",
+		"psr/simple-cache": "*",
+		"wpdesk/wp-codeception": "^2.11",
+		"wpdesk/wp-plugin-flow": "^3",
+		"wpdesk/wp-wpdesk-composer": "^2"
+	},
+	"autoload": {
+		"psr-4": {
+			"WPDesk\\ShopMagicGoogleSheets\\": "src"
+		},
+		"classmap": [
+			"vendor_prefixed"
+		]
+	},
+	"autoload-dev": {
+		"classmap": ["tests"]
+	},
+	"extra": {
+		"text-domain": "shopmagic-for-google-sheets",
+		"translations-folder": "lang",
+		"translation-file-headers": {
+			"Project-Id-Version": "Shopmagic for Google Sheets",
+			"Last-Translator": "Maciej Swoboda <maciej.swoboda@gmail.com>",
+			"X-Poedit-WPHeader": "shopmagic-for-google-sheets.php"
+		},
+		"po-files": {
+			"pl_PL": "pl_PL.po"
+		},
+		"wp-requires-at-least": "5.4",
+		"google/apiclient-services": [
+			"Sheets"
+		],
+		"prefix_psr": true
+	},
+	"scripts": {
+		"test": "echo composer is alive",
+		"phpcs": "phpcs",
+		"phpunit-unit": "phpunit --configuration phpunit-unit.xml --coverage-text --colors=never",
+		"phpunit-unit-fast": "phpunit --configuration phpunit-unit.xml --no-coverage",
+		"phpunit-integration": "phpunit --configuration phpunit-integration.xml --coverage-text --colors=never",
+		"phpunit-integration-fast": "phpunit --configuration phpunit-integration.xml --no-coverage",
+		"docs": "apigen generate",
+		"pre-autoload-dump": "Google\\Task\\Composer::cleanup"
+	}
+}
